@@ -1,0 +1,23 @@
+{
+  "name": "apps-select",
+  "version": "1.0.0",
+  "description": "Select input customizavel com aparência \r + resize (Redimencinamento automático com barra de rolagem automática)",
+  "main": "src/index.js",
+  "dependencies": {
+    "apps-help": "^1.0.1",
+    "encapsulation-props": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guilhermeHenry/apps-select.git"
+  },
+  "keywords": ["HTML", "Form", "Select", "Custom"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guilhermeHenry/apps-select/issues"
+  },
+  "homepage": "https://github.com/guilhermeHenry/apps-select#readme"
+}
