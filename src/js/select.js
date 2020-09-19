@@ -1,4 +1,4 @@
-const helpers = require('apps-help');
+const helpers = require('apps-helpers');
 const camelCase = require('lodash/camelCase');
 
 // ### VARIABLES

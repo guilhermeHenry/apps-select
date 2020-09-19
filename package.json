@@ -8,8 +8,7 @@
     "dev": "npx webpack -d --watch"
   },
   "dependencies": {
-    "apps-help": "^1.0.1",
-    "encapsulation-props": "^1.0.1"
+    "apps-helpers": "^1.0.1"
   },
   "repository": {
     "type": "git",
