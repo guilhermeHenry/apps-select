@@ -1,6 +1,6 @@
 {
   "name": "app-select",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Select input customizavel com aparência \r + resize (Redimencinamento automático com barra de rolagem automática)",
   "main": "src/index.js",
   "scripts": {
