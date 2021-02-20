@@ -18,29 +18,32 @@ Select input customizavel com aparência
 
 ## Estrutura
 ``` html
-<div class="select" id="state1">
-	<div class="output">Escholha seu estado</div>
-	<div class="options" id="1">
-		<div value="AC" class="option">Acre</div>
-		<div value="AL" class="option">Alagoas</div>
-		<div value="AP" class="option">Amapá</div>
-		<div value="AM" class="option">Amazonas</div>
-		<small class="optgroup">Surdeste</small>
-		<div value="BA" class="option">Bahia</div>
-		<div value="CE" class="option">Ceará</div>
-		<div value="DF" class="option">Distrito Federal</div>
-		<div value="ES" class="option">Espírito Santo</div>
-		<hr class="separator">
-		<div value="GO" class="option">Goiás</div>
-		<div value="MA" class="option">Maranhão</div>
-		<div value="MT" class="option">Mato Grosso</div>
-		<div value="MS" class="option">Mato Grosso do Sul</div>
-		<div value="MG" class="option">Minas Gerais</div>
-		<div value="PA" class="option">Pará</div>
-	</div>
+<div class="select" id="state3">
+    <div class="select-output">Escholha seu estado</div>
+    <div class="options" id="1">
+        <div value="AC" class="option">Acre</div>
+        <div value="AL" class="option">Alagoas</div>
+        <div value="AP" class="option">Amapá</div>
+        <div value="AM" class="option">Amazonas</div>
+        <small class="optgroup">Surdeste</small>
+        <div value="BA" class="option">Bahia</div>
+        <div value="CE" class="option">Ceará</div>
+        <div value="DF" class="option">Distrito Federal</div>
+        <div value="ES" class="option">Espírito Santo</div>
+        <hr class="separator">
+        <div value="GO" class="option">Goiás</div>
+        <div value="MA" class="option">Maranhão</div>
+        <div value="MT" class="option">Mato Grosso</div>
+        <div value="MS" class="option">Mato Grosso do Sul</div>
+        <div value="MG" class="option">Minas Gerais</div>
+        <div value="PA" class="option">Pará</div>
+    </div>
 </div>
 ```
 
 ## Imagens
-![](overview.png)
-# apps-select
+![](screenshots/thumb.png)
+
+# Dependences
++ [OOCSS](https://github.com/guilhermeHenry/oocss)
++ [Apps Helpers](https://www.npmjs.com/package/apps-helpers)

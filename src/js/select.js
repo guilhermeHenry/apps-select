@@ -3,21 +3,33 @@ const camelCase = require('lodash/camelCase');
 
 // ### VARIABLES
 module.exports = function (element) {
+	const clsNames = {
+		select: 'select',
+		options: 'options',
+		optionsItem: 'option',
+		optionsItemSelected: 'selected',
+		output: 'select-output'
+	};
+
+	// Estrutura dos Elementos do DOM
 	const elements = helpers.collectionsMap(element, {
-		select: '.select',
+		select: `.${clsNames.select}`,
 		input: null,
-		optionsContainer: '.options',
-		optionsAllElements: '*(parent:optionsContainer)', // Todos os elementos filhos do (element.options)
+		optionsContainer: `.${clsNames.options}`,
+		optionsAllElements: `*(parent:optionsContainer)`, // Todos os elementos filhos do (element.options)
 		optionsList: null, // Somente elementos filhos do (element.options) com a classe option
 		optionSelected: null, // Somente .option.selected
-		output: '.output'
+		output: `.${clsNames.output}`
 	});
 
+	// ** Dados
 	const datas = {
 		// Dados estáticos
 		indexOptionSelected: null,
 		elementsTotal: null,
 		elementsHeight: null, // setProps
+
+		// Position
 		offsetTop: null,
 		offsetBottom: null,
 		offsetTopSize: null,
@@ -39,7 +51,7 @@ module.exports = function (element) {
 	};
 
 	helpers.encapsulation(datas, elements, coordinates);
-
+	
 	const init = function () {
 		datas.set('props', {});
 		datas.set('elements.height', []);
@@ -47,10 +59,10 @@ module.exports = function (element) {
 		datas.set('elements.total', elements.get('options.all.elements').length);
 
 		elements.get('options.all.elements').forEach((element, index) => {
-			if (element.classList.contains('option')){
+			if (element.classList.contains(clsNames.optionsItem)){
 				elements.set('options.list', element, index);
 
-				if (element.classList.contains('selected')){
+				if (element.classList.contains(clsNames.optionsItemSelected)){
 					datas.set('index.option.selected', index);
 					elements.set('option.selected', element);
 				}
@@ -138,30 +150,37 @@ module.exports = function (element) {
 		}
 	}
 
-
 	const events = {
 		show(event){
 			datas.set('window.width', window.innerWidth);
 			datas.set('window.height', window.innerHeight);
+			datas.set('props', elements.get('output').offsetWidth, 'width'); // Update output element width
 
-			// X
-			coordinates.set('left', event.clientX - (event.offsetX + 1)); // distância da borda lateral esqueda até o elemento
-			coordinates.set('right', datas.get('window.width') - (coordinates.get('left')  + datas.get('props', 'width'))); // distância da borda lateral direita até o elemento
-		
-			// Y
-			coordinates.set('top', event.clientY - (event.offsetY + 1)); // Distância do topo até o elemento
-			coordinates.set('bottom', datas.get('window.height') - (coordinates.get('top')  + datas.get('props', 'height')));
+			// *** COORDINATES X
+
+			/** clientX (Posição do clique até a borda lateral esquerda)
+			  * offsetX (Posição do clique até a borda lateral do elemento)
+			  */
+			coordinates.set('left', event.clientX - (event.offsetX + 1)); // Distância da lateral esqueda até o elemento
+			coordinates.set('right', datas.get('window.width') - (coordinates.get('left')  + datas.get('props', 'width'))); // Distância da lateral direita até o elemento
+
+			// *** COORDINATES Y
+			coordinates.set('top', event.clientY - (event.offsetY + 1)); // Distância do elemento até o topo 
+			coordinates.set('bottom', datas.get('window.height') - (coordinates.get('top')  + datas.get('props', 'height'))); // Distância do elemento até o rodapé 
 			
-			// + padding + border
-			coordinates.set('client.top', datas.get('window.height') - coordinates.get('bottom'));
-			coordinates.set('client.bottom', datas.get('window.height') - coordinates.get('top'));
+			// COORDINATES CLIENT
+			coordinates.set('client.top', datas.get('window.height') - coordinates.get('bottom')); // coordinates-top + element-height
+			coordinates.set('client.bottom', datas.get('window.height') - coordinates.get('top')); // coordinates-bottom + element-height
 
-			// ## OFFSET
-			// >> index
-			datas.set('offset.top', datas.get('index.option.selected'));
-			datas.set('offset.bottom', datas.get('elements.total') - datas.get('index.option.selected') - 1);
+			coordinates.set('client.left', datas.get('window.width') - coordinates.get('right')); // coordinates-top + element-height
+			coordinates.set('client.right', datas.get('window.width') - coordinates.get('left')); // coordinates-bottom + element-height
 
-			// >> size
+			// ## OFFSET ##
+			// # OFFSET >> index
+			datas.set('offset.top', datas.get('index.option.selected')); // Faz a contagem do selecionado até do topo
+			datas.set('offset.bottom', datas.get('elements.total') - datas.get('index.option.selected') - 1); // Faz a contagem do selecionado até o rodapé
+
+			// # OFFSET >> size
 			datas.set('offset.top.size', getOffset(datas.get('offset.top')));
 			datas.set('offset.bottom.size', getOffset(datas.get('elements.total') - 1, datas.get('index.option.selected')));
 
@@ -206,6 +225,19 @@ module.exports = function (element) {
 				elements.get('options.container').style.top = '-' + max + 'px';
 				elements.get('options.container').style.maxHeight = coordinates.get('client.top') + 'px';
 			}
+
+
+			// ## GETTING POSITION LOCATION - EAST
+			if (coordinates.get('left') < coordinates.get('right')){
+				elements.get('options.container').style.left = 0;
+				elements.get('options.container').style.right = 'auto';
+			}else{
+				elements.get('options.container').style.left = 'auto';
+				elements.get('options.container').style.right = 0;
+			}
+
+			// console.log(north, south);
+			// ## GETTING POSITION LOCATION - WEST
 		}
 	};
 
@@ -271,7 +303,6 @@ module.exports = function (element) {
 	const setPosition = function () {
 		let positionTop = 0;
 			positionTop -= elements.get('option.selected') ? datas.get('offset.top.size') : 0;
-			console.log(datas.get('offset.top.size'));
 		elements.get('options.container').style.top = positionTop + 'px';
 	}
 
