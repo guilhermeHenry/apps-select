@@ -15,7 +15,8 @@
     "HTML",
     "Form",
     "Select",
-    "Custom"
+    "Custom",
+    "Menu-drop-down"
   ],
   "author": "guilhermehenryk",
   "license": "ISC",

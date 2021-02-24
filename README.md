@@ -1,5 +1,8 @@
+![](screenshots/thumb.png)
 # Select
-Select input customizavel com aparência 
+[![npm](https://img.shields.io/npm/v/app-select)](https://www.npmjs.com/package/app-select)
+
+**Select input** customizavel com aparência 
 + resize (Redimencinamento automático com barra de rolagem automática)
 
 ## Estrutura
@@ -40,9 +43,6 @@ Select input customizavel com aparência
     </div>
 </div>
 ```
-
-## Imagens
-![](screenshots/thumb.png)
 
 # Dependences
 + [OOCSS](https://github.com/guilhermeHenry/oocss)
