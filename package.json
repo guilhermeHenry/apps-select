@@ -16,7 +16,8 @@
     "Form",
     "Select",
     "Custom",
-    "Menu-drop-down"
+    "Menu-drop-down",
+    "MAC OS select"
   ],
   "author": "guilhermehenryk",
   "license": "ISC",

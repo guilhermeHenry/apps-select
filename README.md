@@ -1,25 +1,52 @@
 ![](screenshots/thumb.png)
-# Select
+# Select Drop Down Menu
 [![npm](https://img.shields.io/npm/v/app-select)](https://www.npmjs.com/package/app-select)
 
-**Select input** customizavel com aparência 
-+ resize (Redimencinamento automático com barra de rolagem automática)
+## Features
++ **Standard style** (Estido padrão para todos os navegadores)
++ **Automatic resizing** (Redimencinamento automático com barra de rolagem automática)
 
 ## Estrutura
++ **select**
+    - id - Relaciona-se com o name do input
 
-1. **option**
-	+  [value] valor para armazenamento 
-	+  [ContentText] Exibição para o usuário
-	+  [class="option"] - **Obrigatório**
-2. **Separator** - Elemento reponsavel pela linha horizontal que divide elementos
-3. **Option Group**
-	[class="optgroup"] Obrigatória
-	[ContentText] Nome do grupo
-4. **output** - Exibição da opção selecionada para o usuário
-5. **select**
-   + [id] - Relaciona-se com o name do input
++ **output**
+``` html 
+<div class="select-output">Escholha seu estado</div>
+```
+    - `.select-output` - __required__
 
-## Estrutura
++ **output CSS** - Estilos personalizáveis
+``` css 
+    background-color
+    padding-(top, right, bottom, left)
+    width
+```
+
++ **option**
+``` html 
+<div value="Brazil" class="option">Brazil</div>
+```
+    + `.option` - __required__
+    + `attr value` - __required__
+    + `.selected` - Opção selecionada
+    + `.disabled` - This Boolean attribute indicates that the user cannot interact with the control
+
++ **Separator** Elemento reponsavel pela linha horizontal que divide elementos
+``` html 
+<hr class="separator"> 
+```
+    - `small` Tagname
+    - `.separator` required
+
++ **Option Group** 
+``` html 
+    <small class="optgroup">Nome do grupo</small>
+```
+    - `small` Tagname 
+    - `.optgroup` required
+
+## Resultado
 ``` html
 <div class="select" id="state3">
     <div class="select-output">Escholha seu estado</div>
