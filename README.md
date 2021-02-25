@@ -14,7 +14,7 @@
 ``` html 
 <div class="select-output">Escholha seu estado</div>
 ```
-    - `.select-output` - __required__
+- `.select-output` - __required__
 
 + **output CSS** - Estilos personalizáveis
 ``` css 
