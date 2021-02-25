@@ -27,24 +27,24 @@
 ``` html 
 <div value="Brazil" class="option">Brazil</div>
 ```
-    + `.option` - __required__
-    + `attr value` - __required__
-    + `.selected` - Opção selecionada
-    + `.disabled` - This Boolean attribute indicates that the user cannot interact with the control
+- `.option` - __required__
+- `attr value` - __required__
+- `.selected` - Opção selecionada
+- `.disabled` - This Boolean attribute indicates that the user cannot interact with the control
 
 + **Separator** Elemento reponsavel pela linha horizontal que divide elementos
 ``` html 
 <hr class="separator"> 
 ```
-    - `small` Tagname
-    - `.separator` required
+- `small` Tagname
+- `.separator` required
 
 + **Option Group** 
 ``` html 
     <small class="optgroup">Nome do grupo</small>
 ```
-    - `small` Tagname 
-    - `.optgroup` required
+- `small` Tagname 
+- `.optgroup` required
 
 ## Resultado
 ``` html
